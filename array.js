@@ -27,7 +27,7 @@ var person = {
     age: 20,
     status: 'single',
     dist: 'mymensingh'
-}
+};
 
 console.log(person);
 console.log(person.name);
@@ -45,3 +45,25 @@ another.name = "karim";
 another['job'] = 'progammer';
 
 console.log(another);
+
+var newperson = {
+    name: 'A',
+    job: 'Teacher',
+    child: ['B','C','D'],
+    age: function(birthYear){
+        return 2017-birthYear;
+    }
+};
+
+console.log(newperson);
+console.log(newperson.child);
+console.log(newperson.age(1997));
+
+var ageperson = {
+    birthYear: 2000,
+    calculate: function(){
+        this.age = 2017 - this.birthYear;
+    }
+};
+ageperson.calculate();
+console.log(ageperson);

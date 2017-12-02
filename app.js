@@ -9,9 +9,9 @@ var lname = 'rahman';
 
 console.log(fname + " "+lname);
 
-var name = prompt("what is your name? ?");
+//var name = prompt("what is your name? ?");
 
-alert(name);
+//alert(name);
 
 //---------------------------Condition--------------------------
 

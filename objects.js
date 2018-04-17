@@ -128,6 +128,46 @@ console.log(fullAges);
 console.log(rates);
 
 
+// Function returning Function
+
+function interviewQuestion(job) {
+    if(job === 'designer'){
+        return function (name) {
+            console.log(name + ', Do you know what is UX?');
+        }
+    }else if(job === 'teacher'){
+        return function (name) {
+            console.log('What subject do you teach ' + name + ' ?');
+        }
+    }else{
+        return function (name) {
+            console.log('name,' + ' What do you do?');
+        }
+    }
+}
+
+var teacherQues = interviewQuestion('teacher');
+var designerQues = interviewQuestion('designer');
+
+teacherQues('Moshiur');
+designerQues('John');
+teacherQues('Neil');
+
+interviewQuestion('designer')('Moshiur');
+
+
+// Immediately invoked function expression
+
+(function () {
+    var score = Math.random() *10;
+    console.log(score >= 5);
+})();
+
+(function (goodLuck) {
+    var score = Math.random() *10;
+    console.log(score >= 5 -goodLuck);
+})(5);
+
 
 
 

@@ -44,3 +44,91 @@ var max = Object.create(personProto, {
     year : { value : 1971 },
     job: { value : 'Minister'}
 });
+
+
+// primitives vs Objects
+
+// primitives
+
+var a = 20;
+var b = a;
+a = 23;
+
+console.log(a);
+console.log(b);
+
+
+// Object
+
+var ob1 = {
+    age: 20
+};
+
+var ob2 = ob1;
+
+ob1.age = 30;
+console.log(ob1.age);
+console.log(ob2.age);
+
+
+// Functions
+
+var age = 25;
+
+var me = {
+    name: 'Moshiur',
+    city: 'Dhaka'
+};
+
+function change(a, b) {
+    a = 35;
+    b.city = 'Mymensingh';
+}
+
+change(age, me);
+
+console.log(age);
+console.log(me.city);
+
+
+// Passsing function as argument
+
+var years = [1990, 2005, 1950, 1985, 1997];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for(var i = 0; i<arr.length; i++){
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAges(year) {
+    return 2018-year;
+}
+
+function isFullAges(year) {
+    return year >= 25;
+}
+
+function maxHeartRate(year) {
+    if (year >= 18 && year <= 81) {
+        return Math.round(206.9 - (0.67 * year));
+    }else{
+        return -1;
+    }
+}
+
+var ages = arrayCalc(years, calculateAges);
+var fullAges = arrayCalc(ages, isFullAges);
+var rates = arrayCalc(ages, maxHeartRate);
+
+console.log(ages);
+console.log(fullAges);
+console.log(rates);
+
+
+
+
+
+

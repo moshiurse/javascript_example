@@ -169,6 +169,40 @@ interviewQuestion('designer')('Moshiur');
 })(5);
 
 
+// // // // // // // // 
+//      CLOSURE      // 
+// // // // // // // // 
 
+function retirement(retirementAge){
+    var a = ' years untill retirement';
+    return function (year){
+        var age = 2018- year;
+        console.log((retirementAge-age) + a);
+        
+    }
+}
 
+var retirementUS = retirement(70);
+retirementUS(1990);
+retirement(66)(1990);
 
+// interview function with closure
+
+function interviewQues(job) {
+    
+        return function (name) {
+            if(job === 'designer'){
+            console.log(name + ', Do you know what is UX?');
+        }else if(job === 'teacher'){
+        
+            console.log('What subject do you teach ' + name + ' ?');
+        }else{
+        
+            console.log(name+ ', What do you do?');
+        }
+    }
+}
+
+interviewQues('teacher')('moshiur');
+interviewQues('designer')('moshiur');
+interviewQues('Other')('moshiur');

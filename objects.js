@@ -206,3 +206,38 @@ function interviewQues(job) {
 interviewQues('teacher')('moshiur');
 interviewQues('designer')('moshiur');
 interviewQues('Other')('moshiur');
+
+
+// // // // // // // // // // // 
+// //    Call Bind Apply   // //
+// // // // // // // // // // //
+
+var john = {
+    name: 'John',
+    age: '28',
+    job: 'teacher',
+    presenatation: function(style, timeOfDay){
+        if (style === 'formal') {
+            console.log('Good ' +timeOfDay + ', Ladies and Gants.I\'m '+
+             this.name + ', I\'m a ' + this.job + ' and I\'m '+ this.age + ' Years Old .');  
+        } else if (style === 'friendly') {
+            console.log('Hey! What\'s Up? I\'m '+this.name + ', I\'m a ' + this.job +
+             ' and I\'m '+ this.age + ' Years Old . Have a nice '+ timeOfDay);
+        }
+    }
+};
+
+var megan = {
+    name: 'Megan',
+    age: '20',
+    job: 'designer'
+};
+
+john.presenatation('formal', 'morning');
+john.presenatation.call(megan, 'friendly', 'evening');
+
+john.presenatation.apply(megan, ['friendly', 'evening']);
+
+var johnFriendly = john.presenatation.bind(john, 'friendly');
+
+johnFriendly('morning');

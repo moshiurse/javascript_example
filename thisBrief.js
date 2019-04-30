@@ -78,9 +78,84 @@ function foo(num) {
 
 
 
-        //Default This binding
+//Default This binding
         function foo(){
             console.log(this.a);
             }
             var a = 2;
             foo(); //2
+
+//Implicit Binding
+
+function foo() {
+    console.log( this.a );
+    }
+    
+    var obj = {
+        a: 2,
+        foo: foo
+    }
+    obj.foo();//2
+
+//top/last level of an object property reference chain matters to the call-site
+function foo() {
+    console.log( this.a );
+    }
+    var obj2 = {
+    a: 42,
+    foo: foo
+    };
+    var obj1 = {
+    a: 2,
+    obj2: obj2
+    };
+    obj1.obj2.foo();//42
+
+    //implicit loss
+
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 5,
+        foo: foo
+    }
+
+    var bar = obj.foo;
+    var a = "Hello!";
+    bar();
+
+
+// Implicit binding
+
+function foo() {
+    console.log( this.a );
+    }
+
+    var obj = {
+    a: 2
+    };
+
+    foo.call( obj ); // 2
+
+//Hard binding using call()
+
+function foo() {
+    console.log(this.a);
+}
+
+var obj = {
+    a:5
+}
+
+var bar = function(){
+    foo.call(obj);
+}
+
+bar(); //print 5
+
+setTimeout(bar,1000);//print 2
+
+bar.call(window);
+

@@ -159,3 +159,72 @@ setTimeout(bar,1000);//print 2
 
 bar.call(window);
 
+//wrap function with hard binding
+function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+var obj = {
+a: 2
+};
+var bar = function() {
+return foo.apply( obj, arguments );
+};
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+
+//Alternate way to binding
+function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+function bind(fn,obj){
+    return function () {
+        return fn.apply(obj,arguments);
+    };
+}
+
+var obj = {
+    a: 5
+};
+
+var bar = bind(foo,obj);
+
+var ba = bar(10);
+console.log(ba);
+
+//New binding
+function foo(a) {
+    this.a = a;
+}
+
+var obj = {
+    foo:foo
+};
+
+var obj2 = {};
+obj.foo(5);
+console.log(obj.a);
+
+obj.foo.call(obj2,3);
+console.log(obj2.a);
+
+var bar = new foo(10);
+console.log(obj.a);
+console.log(bar.a);
+ 
+//Check is hard binding_is_more_precedent_than_new_binding
+
+function foo(something) {
+    this.a = something;
+    }
+    var obj1 = {};
+    var bar = foo.bind( obj1 );
+    bar( 2 );
+    console.log( obj1.a ); // 2
+    var baz = new bar( 3 );
+    console.log( obj1.a ); // 2
+    console.log( baz.a ); // 3
+
+    

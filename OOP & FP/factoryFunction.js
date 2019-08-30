@@ -40,3 +40,18 @@ function createEnemy(name,age) {
 const moshiur = createEnemy('Moshiur',23);
 
 moshiur.work = CommonFunction.work();
+
+//Constructor function
+
+function constfunction(name,age) {
+    this.name = name;
+    this.age = age;
+}
+
+constfunction.prototype.attak = function(){
+    return "I am "+this.name;
+}
+
+let moshiur = new constfunction('moshiur',22);
+moshiur.name;
+moshiur.attak();
